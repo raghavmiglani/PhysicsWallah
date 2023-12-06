@@ -21,10 +21,11 @@ using namespace std;
 int main()
 {
     string s;
-    map<string, vector<int>> mp;
+    map<string, vector<int>> class_type;
     unordered_map<int, int> checked;
-    mp["NA"]; mp["AV"]; mp["ANV"]; mp["BV"]; mp["BNV"];
+    class_type["NA"]; class_type["AV"]; class_type["ANV"]; class_type["BV"]; class_type["BNV"];
     int limit = 0;
+
     while(getline(cin, s))
     {
         if(s == "fin" || s == "")
@@ -53,16 +54,16 @@ int main()
             continue;
         checked[roll] = 1;
 
-        int sz = mp[type].size();
+        int sz = class_type[type].size();
         if(sz < limit)
-            mp[type].push_back(roll);
+            class_type[type].push_back(roll);
         else
-            mp["NA"].push_back(roll);
+            class_type["NA"].push_back(roll);
     }
 
 
     /*Printing all the classes accordingly*/
-    for(auto [type, students] : mp)
+    for(auto [type, students] : class_type)
     {
         cout << type << " : [";
         int n = students.size();
