@@ -20,36 +20,36 @@ using namespace std;
 
 int main()
 {
-    string s;
+    string input_given;
     map<string, vector<int>> class_type;
     unordered_map<int, int> checked;
     class_type["NA"]; class_type["AV"]; class_type["ANV"]; class_type["BV"]; class_type["BNV"];
     int limit = 0;
 
-    while(getline(cin, s))
+    while(getline(cin, input_given))
     {
-        if(s == "fin" || s == "")
+        if(input_given == "fin" || input_given == "")
             break;
 
-        stringstream input(s);  
+        stringstream input(input_given);  
         // We are using stringstream for converting the whole line of string into partitions
         // according to the spaces and pushing the strings into a vector<string> and solving 
         // further accordingly
         string temp;
-        vector<string> v;
+        vector<string> student_details;
 
         while(input >> temp)
-            v.push_back(temp);
+            student_details.push_back(temp);
         
-        if(v[0] == "init")
+        if(student_details[0] == "init")
         {
-            int sz = stoi(v[1]);
+            int sz = stoi(student_details[1]);
             limit = sz / 4;
             continue;
         }
-        string type = v[2] + v[3];
+        string type = student_details[2] + student_details[3];
 
-        int roll = stoi(v[1]); //stoi converting string to integer
+        int roll = stoi(student_details[1]); //stoi converting string to integer
         if(checked[roll] == 1)
             continue;
         checked[roll] = 1;
