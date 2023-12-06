@@ -1,3 +1,20 @@
+/*
+
+Approach: Just take the inputs until we get input as "fin"
+set the class limit after taking the init input and dividing it into 4 classes
+
+now just take all the queries as input and make a map which contains 
+vectors as value and type of class as a key 
+
+get the class type by adding the class and food types 
+Now, push the roll no. of all the students to the particular vector in map according to the key
+which we got using the type of food and class
+
+finally print all the classes
+
+
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -13,7 +30,10 @@ int main()
         if(s == "fin" || s == "")
             break;
 
-        stringstream input(s);
+        stringstream input(s);  
+        // We are using stringstream for converting the whole line of string into partitions
+        // according to the spaces and pushing the strings into a vector<string> and solving 
+        // further accordingly
         string temp;
         vector<string> v;
 
@@ -28,7 +48,7 @@ int main()
         }
         string type = v[2] + v[3];
 
-        int roll = stoi(v[1]);
+        int roll = stoi(v[1]); //stoi converting string to integer
         if(checked[roll] == 1)
             continue;
         checked[roll] = 1;
@@ -40,6 +60,8 @@ int main()
             mp["NA"].push_back(roll);
     }
 
+
+    /*Printing all the classes accordingly*/
     for(auto [type, students] : mp)
     {
         cout << type << " : [";
